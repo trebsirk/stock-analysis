@@ -6,3 +6,5 @@ test:
 build:
 	@echo "building..."
 
+run-backend: 
+	./backend/run.sh
