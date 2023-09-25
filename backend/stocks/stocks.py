@@ -15,3 +15,6 @@ def get_stock_data(ticker: str):
         print(f'error getting {ticker} data: {e}')
         return {}
 
+
+def transform_stock_data(data: dict):
+    return data
