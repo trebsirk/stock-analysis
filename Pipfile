@@ -8,7 +8,7 @@ fastapi = "*"
 uvicorn = "*"
 yfinance = "*"
 httpx = "*"
-fastapi-cache = "*"
+cachetools = "*"
 
 [dev-packages]
 pytest = "*"

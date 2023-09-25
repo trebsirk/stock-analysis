@@ -7,4 +7,4 @@ build:
 	@echo "building..."
 
 run-backend: 
-	./backend/run.sh
+	PYTHONPATH=./backend ./backend/run.sh
