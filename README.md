@@ -7,4 +7,4 @@ This app allows a user to select a stock and see statistics and analysis for tha
 The UX is build with Vue.js 3. 
 
 ## Backend
-The python packages are managed with `pipenv`. 
+The backend is built with FastAPI. Python packages are managed with `pipenv`. 
