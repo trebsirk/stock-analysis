@@ -9,6 +9,7 @@ uvicorn = "*"
 yfinance = "*"
 httpx = "*"
 cachetools = "*"
+flake8 = "*"
 
 [dev-packages]
 pytest = "*"
