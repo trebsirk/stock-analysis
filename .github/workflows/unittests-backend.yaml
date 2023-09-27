@@ -1,0 +1,18 @@
+name: unittests-backend
+
+on: 
+  push:
+    branches:
+      - 'prod'
+  pull_request:
+    branches:
+      - 'main'
+      - 'prod'
+      - 'dev'
+
+jobs:
+  api-test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Backend Test Step
+        run: echo "testing backend ..."
