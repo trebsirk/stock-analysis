@@ -1,10 +1,16 @@
 .PHONY: test build clean
 
-test:
+# backend 
+
+test-api:
 	PYTHONPATH=./backend pytest -ra
 
-build:
-	@echo "building..."
+build-api:
+	./init.sh
 
-run-backend: 
+run-api: 
 	PYTHONPATH=./backend ./backend/run.sh
+
+
+run-client:
+	cd frontend; npm run serve

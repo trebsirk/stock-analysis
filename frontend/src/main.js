@@ -1,4 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp, h } from 'vue';
+import App from './App.vue';
 
-createApp(App).mount('#app')
+
+//import CanvasJSC from 'canvasjs';
+//App.use(CanvasJSChart);
+//import CanvasJSChart from "@canvasjs/vue-charts";
+
+//const app = createApp(App)
+const app = createApp({
+    render: () => h(App)
+});
+//app.use(CanvasJSChart);
+app.mount('#app')
