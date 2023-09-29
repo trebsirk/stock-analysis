@@ -1,16 +1,20 @@
 <template>
-  <StockDisplay />
+  <div>
+    <StockDisplay />
+  </div>
 </template>
 
 <script>
-import StockDisplay from './components/StockDisplay.vue';
+//import LineChart from "./components/LineChart.vue";
+import StockDisplay from "./components/StockDisplay.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    StockDisplay
-  }
-}
+    StockDisplay,
+    //LineChart
+  },
+};
 </script>
 
 <style>

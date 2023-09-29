@@ -11,3 +11,6 @@ build-api:
 run-api: 
 	PYTHONPATH=./backend ./backend/run.sh
 
+
+run-client:
+	cd frontend; npm run serve
