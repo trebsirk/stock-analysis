@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2>Stock data</h2>
-    <LineChart2 />
+    <input v-model="stock" type="text" placeholder="AAPL" />
+    <button @click="getStockData">Submit</button>
+    <LineChart2 :ticker="stock" ref="lineChartRef" />
     <!-- <h1>JSON Data from REST API</h1>
     {{ apiData["Open"] }}
     <br />
@@ -38,6 +40,7 @@ ChartJS.register(
   Tooltip,
   Legend
 ); */
+
 import LineChart2 from "./LineChart2.vue";
 
 export default {
@@ -45,17 +48,28 @@ export default {
   data() {
     return {
       apiData: [],
+      stock: "AAPL",
     };
   },
+  methods: {
+    getStockData: function () {
+      this.$refs.lineChartRef.getData();
+      
+      /* const url = "http://localhost:8000/stock/" + this.stock;
+      console.log("trying " + url + " data");
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          this.apiData = data;
+          console.log("got " + this.stock + " data");
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        }); */
+    },
+  },
   mounted() {
-    fetch("http://localhost:8000/stock/AAPL")
-      .then((response) => response.json())
-      .then((data) => {
-        this.apiData = data;
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    this.getStockData();
   },
 };
 </script>

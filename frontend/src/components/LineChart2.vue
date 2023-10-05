@@ -45,6 +45,43 @@ ChartJS.register(
 );
 
 export default {
+  props: ["ticker"],
+  setup(props) {
+    console.log("ticker: " + props.ticker);
+  },
+  watch: {
+    ticker(val) {
+      if (val == "AAPL") {
+        console.log("apple");
+      }
+    },
+  },
+  methods: {
+    getData() {
+      this.loaded = false;
+      const url = "http://localhost:8000/stock/" + this.ticker;
+      fetch(url)
+        .then((response) => response.json())
+        .then((apiData) => {
+          //console.log(apiData);
+          const d = {
+            labels: Object.keys(apiData["Close"]),
+            datasets: [
+              {
+                label: this.ticker,
+                backgroundColor: "#f87979",
+                data: Object.values(apiData["Close"]),
+              },
+            ],
+          };
+          this.data = d;
+          this.loaded = true;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    },
+  },
   components: {
     Line,
   },
@@ -57,29 +94,9 @@ export default {
     options: options,
     myStyles: myStyles,
   }),
-  mounted() {
-    this.loaded = false;
 
-    fetch("http://localhost:8000/stock/AAPL")
-      .then((response) => response.json())
-      .then((apiData) => {
-        //console.log(apiData);
-        const d = {
-          labels: Object.keys(apiData["Close"]),
-          datasets: [
-            {
-              label: "AAPL",
-              backgroundColor: "#f87979",
-              data: Object.values(apiData["Close"]),
-            },
-          ],
-        };
-        this.data = d;
-        this.loaded = true;
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+  mounted() {
+    this.getData();
   },
 };
 </script>
